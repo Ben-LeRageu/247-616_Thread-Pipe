@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h> 
+#include <sys/wait.h>
 
 const char* processusPereOuFils;
 
@@ -41,12 +42,16 @@ int main()
 {
     pid_t pid;
     pid = fork();
-
+    if(pid == 0){
     // Appel fonction Enfant
-
-
-    // Appel fonction Parent
-
-    
+      codeDuProcessusEnfant();
+    } else {
+      int status ;
+      waitpid(pid, &status, 0); //Attendre le processus enfant
+      if(WIFEXITED(status)) {
+       // Appel fonction Parent
+       codeDuProcessusParent();
+      } 
+     }
     return 0;
 }
