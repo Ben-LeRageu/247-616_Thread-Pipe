@@ -12,10 +12,11 @@
 #include <stdio.h>
 
 /**
- * 
- *
- *
- *
+ *fais le processus 1 
+ *ensuite attend 10 sec
+ *fais le processus 3
+ *attend  5 sec
+ *fais le processus 5
  * @return     0 
  */
 int main() {
